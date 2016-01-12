@@ -1,8 +1,0 @@
-{"level":"info","message":"Got request GET /echo?message=Hello","timestamp":"2016-01-09T17:45:34.170Z"}
-{"level":"debug","message":"Echo: Hello","timestamp":"2016-01-09T17:45:34.173Z"}
-{"level":"info","message":"Got request GET /echo?message=Hello","timestamp":"2016-01-09T17:48:21.812Z"}
-{"level":"debug","message":"Echo: Hello","timestamp":"2016-01-09T17:48:21.814Z"}
-{"level":"info","message":"Got request GET /echo?message=Hello","timestamp":"2016-01-09T17:48:58.818Z"}
-{"level":"debug","message":"Echo: Hello","timestamp":"2016-01-09T17:48:58.818Z"}
-{"level":"info","message":"Got request GET /hjhgj","timestamp":"2016-01-09T17:49:03.501Z"}
-{"level":"error","message":"Unknown URL","timestamp":"2016-01-09T17:49:03.501Z"}
