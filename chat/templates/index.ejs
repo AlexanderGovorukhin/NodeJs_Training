@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/css/style.css' />
-  </head>
-  <body>
-
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  <section class="container">
-    <h1>Привет, мир!</h1>
-    <script>
-
-    </script>
-    <%=body%>
-    <%-body%>
-  </section>
-
-  </body>
-</html>
+<% layout('../templates/layout/page') -%>
+<% block('title', 'Привет Blocks');  -%>
+<p class="lead">Всем привет!</p>

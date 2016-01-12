@@ -5,6 +5,8 @@ var config = require('config');
 var log = require('libs/log')(module);
 
 var app = express();
+
+app.engine('ejs', require('ejs-locals'));  // layout, block, partials
 app.set('views', __dirname + '/templates');
 app.set('view engine', 'ejs');
 
@@ -22,10 +24,7 @@ app.use(express.cookieParser('your secret here'));  // req.cookies
 app.use(app.router);
 
 app.get('/', function(req, res, next){
-  res.render("index",{
-    title:'Test Title',
-    body:'<b>Hello</b>'
-  });
+  res.render("index");
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,7 +38,6 @@ app.use(function(req, res, next){
     next();
   }
 });
-
 app.use(function(req, res, next){
   if (req.url == '/forbidden'){
     next(new Error("wops, denied"));
@@ -47,7 +45,6 @@ app.use(function(req, res, next){
     next();
   }
 });
-
 app.use(function(req, res, next){
   if (req.url == '/test'){
     res.end("Test");
@@ -55,11 +52,9 @@ app.use(function(req, res, next){
     next();
   }
 });
-
 app.use(function(req,res){
   res.send(404, "Page Not Found Sorry");
 });
-
 app.use(function(err, req, res, next){
   // NODE_ENV = 'producation'
   if ('development' == app.get('env')) {
@@ -69,16 +64,6 @@ app.use(function(err, req, res, next){
     res.send(500);
   }
 });
-
-//
-//var routes = require('./routes');
-//var user = require('./routes/user');
-//
-//// all environments
-//
-//app.get('/', routes.index);
-//app.get('/users', user.list);
-
 
 http.createServer(app).listen(config.get('port'), function(){
   log.info('Express server listening on port ' + config.get('port'));
