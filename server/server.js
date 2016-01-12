@@ -3,12 +3,13 @@
 var  http = require('http');
 var url = require('url');
 
+var server = http.createServer();
 
-var server = new http.Server(function(req, res){
-
+server.on('request', function(req, res){
     var urlParsed = url.parse(req.url, true);
+    debugger;
 
-    if (urlParsed.pathname == '/echo' && urlParsed.query.message){
+    if (req.method == 'GET' && urlParsed.pathname == '/echo' && urlParsed.query.message){
         res.end(urlParsed.query.message);
         return;
     }
@@ -17,10 +18,7 @@ var server = new http.Server(function(req, res){
     res.end("Page not found");
 });
 
-// http.Server -> net.Server -> EventEmitter
-
-
-
-server.listen(1337,'127.0.0.1');
+server.listen(1337);
+console.log("Server is running");
 
 
