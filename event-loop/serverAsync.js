@@ -1,7 +1,9 @@
 var http = require('http');
 var fs = require('fs');
 
-http.createServer(function(req,res){
+var server = new http.Server();
+
+server.on('request', function(req,res){
     var info;
 
     if(req.url == '/'){
@@ -22,4 +24,7 @@ http.createServer(function(req,res){
         /* 404 */
     }
 
-}).listen(3000);
+});
+
+
+server.listen(3000);
